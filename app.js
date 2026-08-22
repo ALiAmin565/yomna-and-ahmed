@@ -1,5 +1,5 @@
 const WEDDING = {
-  title: "Youmna Afify & Ahmed Wedding",
+  title: "Yomna Afifi & Ahmed Yasser Wedding",
   start: "2026-09-17T20:00:00+03:00",
   end: "2026-09-18T01:00:00+03:00",
   location: "Beau Jardin Venues, Km 28 Alexandria Desert Road, Sheikh Zayed, Giza, Egypt",
@@ -12,6 +12,7 @@ const film = document.getElementById("film");
 const invite = document.getElementById("invite");
 const openBtn = document.getElementById("openBtn");
 const skipBtn = document.getElementById("skipBtn");
+const coverSkipBtn = document.getElementById("coverSkipBtn");
 const calBtn = document.getElementById("calBtn");
 const bgm = document.getElementById("bgm");
 
@@ -88,6 +89,13 @@ if (openBtn) {
 
 if (skipBtn) {
   skipBtn.addEventListener("click", () => {
+    startMusic();
+    showInvite();
+  });
+}
+
+if (coverSkipBtn) {
+  coverSkipBtn.addEventListener("click", () => {
     startMusic();
     showInvite();
   });
