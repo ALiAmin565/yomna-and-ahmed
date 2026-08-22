@@ -1,5 +1,5 @@
 const WEDDING = {
-  title: "Yomna Afify & Ahmed Wedding",
+  title: "Youmna Afify & Ahmed Wedding",
   start: "2026-09-17T20:00:00+03:00",
   end: "2026-09-18T01:00:00+03:00",
   location: "Beau Jardin Venues, Km 28 Alexandria Desert Road, Sheikh Zayed, Giza, Egypt",
