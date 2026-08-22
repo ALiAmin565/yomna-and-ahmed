@@ -104,10 +104,18 @@
         </footer>
       </main>
 
-      <button class="music-btn" id="musicBtn" type="button" aria-label="Play music" aria-pressed="false">
+      <button class="music-btn on" id="musicBtn" type="button" aria-label="Hide music" aria-pressed="true">
         <span class="music-icon" aria-hidden="true">♪</span>
       </button>
-      <audio id="bgm" src="assets/music.mp3" loop preload="auto" playsinline></audio>
+      <div class="anghami-dock open" id="anghamiDock">
+        <iframe
+          title="A Thousand Years violin version on Anghami"
+          src="https://widget.anghami.com/song/57092005?theme=dark&lang=en"
+          allow="autoplay; encrypted-media; clipboard-write"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <a class="anghami-open" href="https://play.anghami.com/song/57092005" target="_blank" rel="noopener">Play on Anghami · A Thousand Years (Violin)</a>
+      </div>
     </div>
   </div>
   <script src="app.js"></script>

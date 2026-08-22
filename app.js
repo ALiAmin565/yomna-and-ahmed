@@ -16,48 +16,30 @@ const skipBtn = document.getElementById("skipBtn");
 const shareBtn = document.getElementById("shareBtn");
 const calBtn = document.getElementById("calBtn");
 const musicBtn = document.getElementById("musicBtn");
-const bgm = document.getElementById("bgm");
+const anghamiDock = document.getElementById("anghamiDock");
 
-function setMusicUi(playing) {
+function setMusicUi(open) {
   if (!musicBtn) return;
-  musicBtn.classList.toggle("on", playing);
-  musicBtn.classList.toggle("needs-tap", !playing);
-  musicBtn.setAttribute("aria-pressed", playing ? "true" : "false");
-  musicBtn.setAttribute("aria-label", playing ? "Mute music" : "Play music");
+  musicBtn.classList.toggle("on", open);
+  musicBtn.setAttribute("aria-pressed", open ? "true" : "false");
+  musicBtn.setAttribute("aria-label", open ? "Hide music" : "Play music");
+  if (anghamiDock) anghamiDock.classList.toggle("open", open);
 }
 
-async function startMusic() {
-  if (!bgm) return;
-  bgm.volume = 0.48;
-  bgm.loop = true;
-  try {
-    await bgm.play();
-    setMusicUi(true);
-  } catch {
-    setMusicUi(false);
-    if (musicBtn) musicBtn.classList.add("needs-tap");
-  }
+function startMusic() {
+  setMusicUi(true);
 }
 
 function toggleMusic() {
-  if (!bgm) return;
-  if (bgm.paused) {
-    startMusic();
-  } else {
-    bgm.pause();
-    setMusicUi(false);
-  }
+  const open = !anghamiDock?.classList.contains("open");
+  setMusicUi(open);
 }
 
-if (musicBtn && bgm) {
+if (musicBtn) {
   musicBtn.addEventListener("click", (event) => {
     event.stopPropagation();
     toggleMusic();
   });
-  bgm.addEventListener("pause", () => setMusicUi(false));
-  bgm.addEventListener("play", () => setMusicUi(true));
-  setMusicUi(false);
-  if (!openBtn) musicBtn.classList.add("needs-tap");
 }
 
 let timers = [];
