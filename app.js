@@ -12,7 +12,6 @@ const film = document.getElementById("film");
 const invite = document.getElementById("invite");
 const openBtn = document.getElementById("openBtn");
 const skipBtn = document.getElementById("skipBtn");
-const shareBtn = document.getElementById("shareBtn");
 const calBtn = document.getElementById("calBtn");
 const bgm = document.getElementById("bgm");
 
@@ -164,32 +163,5 @@ if (calBtn) {
     a.download = "yomna-ahmed-wedding.ics";
     a.click();
     URL.revokeObjectURL(url);
-  });
-}
-
-if (shareBtn) {
-  shareBtn.addEventListener("click", async () => {
-    const data = {
-      title: "Yomna Afify & Ahmed — Wedding Invitation",
-      text: "You're invited to the wedding of Yomna Afify & Ahmed · 17 September 2026 · 8:00 PM · Beau Jardin",
-      url: window.location.href.replace(/invite\.html$/, ""),
-    };
-    try {
-      if (navigator.share) {
-        await navigator.share(data);
-        return;
-      }
-    } catch {
-      /* cancelled */
-    }
-    try {
-      await navigator.clipboard.writeText(data.url);
-      shareBtn.textContent = "Link copied · تم نسخ الرابط";
-      setTimeout(() => {
-        shareBtn.textContent = "Share invitation · شارك الدعوة";
-      }, 2200);
-    } catch {
-      prompt("Copy this invitation link:", data.url);
-    }
   });
 }
