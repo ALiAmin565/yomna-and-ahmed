@@ -53,6 +53,7 @@ button, a { font-family: inherit; }
   overflow: visible;
   height: auto;
 }
+.stage.is-open .grain { display: none; }
 
 .invite-page .velvet {
   padding: 20px 12px 64px;
@@ -165,38 +166,104 @@ button, a { font-family: inherit; }
   margin: 18px 0 16px;
 }
 
-.cover-date {
-  position: relative;
-  margin: 10px 0 28px;
-  letter-spacing: .42em;
-  font-size: 13px;
-  color: var(--olive);
-}
-
 .seal-btn {
   position: relative;
   z-index: 4;
+  margin-top: 18px;
   border: 0;
   background: none;
   padding: 0;
   cursor: pointer;
   display: grid;
   justify-items: center;
-  gap: 12px;
+  gap: 14px;
   color: var(--ink);
   animation: breathe 3.4s ease-in-out infinite;
 }
-.seal-btn img {
-  width: 148px;
-  height: 148px;
-  object-fit: cover;
+
+.khatm {
+  position: relative;
+  width: 158px;
+  height: 158px;
   border-radius: 50%;
-  box-shadow: 0 18px 40px rgba(80, 18, 28, .35);
+  display: grid;
+  place-items: center;
+  align-content: center;
+  background:
+    radial-gradient(circle at 32% 28%, #d64545 0%, #b01c1c 38%, #8a1010 68%, #5c0909 100%);
+  color: #f8ecd8;
+  border: 5px solid #7a0f0f;
+  box-shadow:
+    0 18px 36px rgba(90, 8, 12, .42),
+    inset 0 -12px 18px rgba(0,0,0,.28),
+    inset 0 8px 14px rgba(255, 210, 180, .2);
 }
-.seal-btn span {
-  font-size: 12px;
-  letter-spacing: .12em;
-  text-transform: uppercase;
+.khatm::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(248, 236, 216, .42);
+  pointer-events: none;
+}
+.khatm-word {
+  font-family: var(--ar);
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 1;
+}
+.khatm-day {
+  font-family: var(--serif);
+  font-size: 46px;
+  font-weight: 700;
+  line-height: .85;
+  letter-spacing: .02em;
+}
+.khatm-month {
+  font-family: var(--serif);
+  font-size: 16px;
+  letter-spacing: .28em;
+  margin-top: 2px;
+}
+.seal-label {
+  font-family: var(--ar);
+  font-size: 16px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.music-btn {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 12;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(36,30,26,.2);
+  border-radius: 50%;
+  background: rgba(244,234,216,.88);
+  color: var(--burgundy);
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  box-shadow: 0 8px 18px rgba(36,30,26,.12);
+}
+.music-btn.on {
+  background: var(--burgundy);
+  color: var(--cream);
+  border-color: var(--burgundy);
+}
+.music-btn.needs-tap {
+  animation: breathe 1.8s ease-in-out infinite;
+}
+.invite-page .music-btn {
+  background: rgba(28, 8, 11, .82);
+  color: var(--gold);
+  border-color: rgba(212, 175, 55, .4);
+}
+.invite-page .music-btn.on {
+  background: var(--gold);
+  color: #1c080b;
 }
 
 .cover-hint {

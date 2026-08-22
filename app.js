@@ -6,15 +6,57 @@ const WEDDING = {
   details: "Thursday 17 September · 8:00 PM · Beau Jardin\nAdults-only celebration.",
 };
 
-const INVITE_PAGE = "invite.html";
-
 const cover = document.getElementById("cover");
 const curtains = document.getElementById("curtains");
 const film = document.getElementById("film");
+const invite = document.getElementById("invite");
 const openBtn = document.getElementById("openBtn");
 const skipBtn = document.getElementById("skipBtn");
 const shareBtn = document.getElementById("shareBtn");
 const calBtn = document.getElementById("calBtn");
+const musicBtn = document.getElementById("musicBtn");
+const bgm = document.getElementById("bgm");
+
+function setMusicUi(playing) {
+  if (!musicBtn) return;
+  musicBtn.classList.toggle("on", playing);
+  musicBtn.classList.toggle("needs-tap", !playing);
+  musicBtn.setAttribute("aria-pressed", playing ? "true" : "false");
+  musicBtn.setAttribute("aria-label", playing ? "Mute music" : "Play music");
+}
+
+async function startMusic() {
+  if (!bgm) return;
+  bgm.volume = 0.48;
+  bgm.loop = true;
+  try {
+    await bgm.play();
+    setMusicUi(true);
+  } catch {
+    setMusicUi(false);
+    if (musicBtn) musicBtn.classList.add("needs-tap");
+  }
+}
+
+function toggleMusic() {
+  if (!bgm) return;
+  if (bgm.paused) {
+    startMusic();
+  } else {
+    bgm.pause();
+    setMusicUi(false);
+  }
+}
+
+if (musicBtn && bgm) {
+  musicBtn.addEventListener("click", (event) => {
+    event.stopPropagation();
+    toggleMusic();
+  });
+  bgm.addEventListener("pause", () => setMusicUi(false));
+  bgm.addEventListener("play", () => setMusicUi(true));
+  setMusicUi(false);
+}
 
 let timers = [];
 
@@ -29,9 +71,22 @@ function clearTimers() {
   timers = [];
 }
 
-function goToInvite() {
+function showInvite() {
   clearTimers();
-  window.location.assign(INVITE_PAGE);
+  if (cover) cover.style.display = "none";
+  if (curtains) curtains.classList.remove("play", "open");
+  if (film) {
+    film.classList.remove("show", "step-1", "step-2", "step-3", "step-4", "step-5", "step-6");
+    film.style.display = "none";
+  }
+  if (invite) {
+    invite.hidden = false;
+    invite.classList.add("show");
+  }
+  document.body.classList.add("invite-page");
+  const stage = document.getElementById("stage");
+  if (stage) stage.classList.add("is-open");
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function playFilm() {
@@ -43,11 +98,12 @@ function playFilm() {
   later(() => film.classList.add("step-4"), 2400);
   later(() => film.classList.add("step-5"), 3100);
   later(() => film.classList.add("step-6"), 4000);
-  later(goToInvite, 7200);
+  later(showInvite, 7200);
 }
 
 function openInvitation() {
   openBtn.disabled = true;
+  startMusic();
   curtains.classList.add("play");
   requestAnimationFrame(() => {
     requestAnimationFrame(() => curtains.classList.add("open"));
@@ -64,11 +120,15 @@ if (openBtn) {
 }
 
 if (skipBtn) {
-  skipBtn.addEventListener("click", goToInvite);
+  skipBtn.addEventListener("click", () => {
+    startMusic();
+    showInvite();
+  });
 }
 
 if (openBtn && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  goToInvite();
+  showInvite();
+  if (musicBtn) musicBtn.classList.add("needs-tap");
 }
 
 function pad(n) {
