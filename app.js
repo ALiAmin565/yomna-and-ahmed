@@ -6,40 +6,25 @@ const WEDDING = {
   details: "Two souls. One beautiful chaos.\nThursday 17 September 2026 · 8:00 PM\nAdults-only celebration — children kindly stay at home.",
 };
 
-const INVITE_PAGE = "invite.html";
-
 const cover = document.getElementById("cover");
 const curtains = document.getElementById("curtains");
 const film = document.getElementById("film");
+const invite = document.getElementById("invite");
 const openBtn = document.getElementById("openBtn");
 const skipBtn = document.getElementById("skipBtn");
 const shareBtn = document.getElementById("shareBtn");
 const calBtn = document.getElementById("calBtn");
-const musicBtn = document.getElementById("musicBtn");
-const anghamiDock = document.getElementById("anghamiDock");
+const bgm = document.getElementById("bgm");
 
-function setMusicUi(open) {
-  if (!musicBtn) return;
-  musicBtn.classList.toggle("on", open);
-  musicBtn.setAttribute("aria-pressed", open ? "true" : "false");
-  musicBtn.setAttribute("aria-label", open ? "Hide music" : "Play music");
-  if (anghamiDock) anghamiDock.classList.toggle("open", open);
-}
-
-function startMusic() {
-  setMusicUi(true);
-}
-
-function toggleMusic() {
-  const open = !anghamiDock?.classList.contains("open");
-  setMusicUi(open);
-}
-
-if (musicBtn) {
-  musicBtn.addEventListener("click", (event) => {
-    event.stopPropagation();
-    toggleMusic();
-  });
+async function startMusic() {
+  if (!bgm) return;
+  bgm.volume = 0.55;
+  bgm.loop = true;
+  try {
+    await bgm.play();
+  } catch {
+    /* browsers block play until a tap — the seal click retries this */
+  }
 }
 
 let timers = [];
@@ -55,9 +40,21 @@ function clearTimers() {
   timers = [];
 }
 
-function goToInvite() {
+function showInvite() {
   clearTimers();
-  window.location.assign(INVITE_PAGE);
+  if (cover) cover.style.display = "none";
+  if (curtains) curtains.classList.remove("play", "open");
+  if (film) {
+    film.classList.remove("show", "step-1", "step-2", "step-3", "step-4", "step-5", "step-6");
+    film.style.display = "none";
+  }
+  if (invite) {
+    invite.hidden = false;
+    invite.classList.add("show");
+  }
+  const stage = document.getElementById("stage");
+  if (stage) stage.classList.add("is-open");
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function playFilm() {
@@ -69,7 +66,7 @@ function playFilm() {
   later(() => film.classList.add("step-4"), 2400);
   later(() => film.classList.add("step-5"), 3100);
   later(() => film.classList.add("step-6"), 4000);
-  later(goToInvite, 7200);
+  later(showInvite, 7200);
 }
 
 function openInvitation() {
@@ -91,11 +88,19 @@ if (openBtn) {
 }
 
 if (skipBtn) {
-  skipBtn.addEventListener("click", goToInvite);
+  skipBtn.addEventListener("click", () => {
+    startMusic();
+    showInvite();
+  });
+}
+
+if (!openBtn) {
+  startMusic();
+  document.addEventListener("pointerdown", startMusic, { once: true });
 }
 
 if (openBtn && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  goToInvite();
+  showInvite();
 }
 
 function pad(n) {

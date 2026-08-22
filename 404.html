@@ -60,18 +60,89 @@
         <p class="film-where">Beau Jardin · Sheikh Zayed</p>
       </section>
 
-      <button class="music-btn on" id="musicBtn" type="button" aria-label="Hide music" aria-pressed="true">
-        <span class="music-icon" aria-hidden="true">♪</span>
-      </button>
-      <div class="anghami-dock open" id="anghamiDock">
-        <iframe
-          title="A Thousand Years violin version on Anghami"
-          src="https://widget.anghami.com/song/57092005?theme=dark&lang=en"
-          allow="autoplay; encrypted-media; clipboard-write"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <a class="anghami-open" href="https://play.anghami.com/song/57092005" target="_blank" rel="noopener">Play on Anghami · A Thousand Years (Violin)</a>
-      </div>
+      <main class="invite" id="invite" hidden>
+        <header class="hero">
+          <p class="eyebrow">The wedding of</p>
+          <h2 class="hero-names">
+            <span>Yomna</span>
+            <i>&amp;</i>
+            <span>Ahmed</span>
+          </h2>
+          <p class="arabic" dir="rtl">ومن كل فوضى خلقنا… حكايتنا.</p>
+          <p class="tagline">Two souls. One beautiful chaos.</p>
+          <img class="keep" src="assets/invitation.jpg" alt="Yomna Afify and Ahmed invitation collage" />
+        </header>
+
+        <section class="card">
+          <p class="card-kicker">Road to Beau Jardin</p>
+          <p class="place">Watch this video for the way to the wedding palace.</p>
+          <video class="road-video" controls playsinline preload="metadata" poster="assets/invitation.jpg">
+            <source src="assets/directions.mp4" type="video/mp4" />
+          </video>
+        </section>
+
+        <section class="card countdown-card">
+          <p class="card-kicker">Until we say I do · حتى يومنا</p>
+          <div class="ticks" id="countdown">
+            <div><strong id="dd">00</strong><span>Days · أيام</span></div>
+            <div><strong id="hh">00</strong><span>Hours · ساعات</span></div>
+            <div><strong id="mm">00</strong><span>Mins · دقائق</span></div>
+            <div><strong id="ss">00</strong><span>Secs · ثوانٍ</span></div>
+          </div>
+        </section>
+
+        <section class="card when">
+          <p class="card-kicker">When · الموعد</p>
+          <p class="big">Thursday</p>
+          <p class="huge">17 September 2026</p>
+          <p class="arabic" dir="rtl">الخميس ١٧ سبتمبر ٢٠٢٦</p>
+          <div class="meta-row">
+            <span class="chip">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3.5 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              Starts at 8:00 PM
+            </span>
+            <span class="chip">17 09 26</span>
+          </div>
+        </section>
+
+        <section class="card where">
+          <p class="card-kicker">Where · المكان</p>
+          <p class="big">Beau Jardin</p>
+          <p class="place">Open-air garden venue · Sheikh Zayed, Giza</p>
+          <p class="arabic" dir="rtl">بو جاردان · الشيخ زايد، الجيزة</p>
+          <p class="address">Km 28 Alexandria Desert Road, opposite Dandy Mall, Sheikh Zayed, Giza, Egypt</p>
+          <div class="map-wrap">
+            <iframe
+              title="Beau Jardin on Google Maps"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://maps.google.com/maps?q=Beau%20Jardin%20Venues%20Sheikh%20Zayed&z=14&output=embed">
+            </iframe>
+          </div>
+        </section>
+
+        <section class="card note">
+          <p class="hearts">♡ ♡</p>
+          <p class="adults">Adults-only celebration</p>
+          <p>We kindly ask that children stay at home.</p>
+          <p class="arabic" dir="rtl">الحفل للكبار فقط — نرجو ترك الأطفال في المنزل.</p>
+        </section>
+
+        <section class="actions">
+          <a class="btn primary" id="calBtn" href="#">Add to calendar · أضف للتقويم</a>
+          <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Beau+Jardin+Venues+Sheikh+Zayed" target="_blank" rel="noopener">Get directions · الاتجاهات</a>
+          <a class="btn" href="https://waze.com/ul?q=Beau%20Jardin%20Venues%20Sheikh%20Zayed" target="_blank" rel="noopener">Open in Waze</a>
+          <button class="btn ghost" id="shareBtn" type="button">Share invitation · شارك الدعوة</button>
+        </section>
+
+        <footer class="end">
+          <img class="end-seal" src="assets/wax-seal.jpg" alt="" />
+          <p>With love, Yomna &amp; Ahmed</p>
+          <p class="arabic" dir="rtl">يومنا · ١٧ ٠٩ ٢٦</p>
+        </footer>
+      </main>
+
+      <audio id="bgm" class="bgm" src="assets/music.mp3" loop preload="auto" playsinline></audio>
     </div>
   </div>
   <script src="app.js"></script>
