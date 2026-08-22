@@ -3,13 +3,14 @@ const WEDDING = {
   start: "2026-09-17T20:00:00+03:00",
   end: "2026-09-18T01:00:00+03:00",
   location: "Beau Jardin Venues, Km 28 Alexandria Desert Road, Sheikh Zayed, Giza, Egypt",
-  details: "Thursday 17 September · 8:00 PM · Beau Jardin\nAdults-only celebration.",
+  details: "Two souls. One beautiful chaos.\nThursday 17 September 2026 · 8:00 PM\nAdults-only celebration — children kindly stay at home.",
 };
+
+const INVITE_PAGE = "invite.html";
 
 const cover = document.getElementById("cover");
 const curtains = document.getElementById("curtains");
 const film = document.getElementById("film");
-const invite = document.getElementById("invite");
 const openBtn = document.getElementById("openBtn");
 const skipBtn = document.getElementById("skipBtn");
 const shareBtn = document.getElementById("shareBtn");
@@ -56,6 +57,7 @@ if (musicBtn && bgm) {
   bgm.addEventListener("pause", () => setMusicUi(false));
   bgm.addEventListener("play", () => setMusicUi(true));
   setMusicUi(false);
+  if (!openBtn) musicBtn.classList.add("needs-tap");
 }
 
 let timers = [];
@@ -71,22 +73,9 @@ function clearTimers() {
   timers = [];
 }
 
-function showInvite() {
+function goToInvite() {
   clearTimers();
-  if (cover) cover.style.display = "none";
-  if (curtains) curtains.classList.remove("play", "open");
-  if (film) {
-    film.classList.remove("show", "step-1", "step-2", "step-3", "step-4", "step-5", "step-6");
-    film.style.display = "none";
-  }
-  if (invite) {
-    invite.hidden = false;
-    invite.classList.add("show");
-  }
-  document.body.classList.add("invite-page");
-  const stage = document.getElementById("stage");
-  if (stage) stage.classList.add("is-open");
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  window.location.assign(INVITE_PAGE);
 }
 
 function playFilm() {
@@ -98,7 +87,7 @@ function playFilm() {
   later(() => film.classList.add("step-4"), 2400);
   later(() => film.classList.add("step-5"), 3100);
   later(() => film.classList.add("step-6"), 4000);
-  later(showInvite, 7200);
+  later(goToInvite, 7200);
 }
 
 function openInvitation() {
@@ -120,15 +109,11 @@ if (openBtn) {
 }
 
 if (skipBtn) {
-  skipBtn.addEventListener("click", () => {
-    startMusic();
-    showInvite();
-  });
+  skipBtn.addEventListener("click", goToInvite);
 }
 
 if (openBtn && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  showInvite();
-  if (musicBtn) musicBtn.classList.add("needs-tap");
+  goToInvite();
 }
 
 function pad(n) {
@@ -199,7 +184,7 @@ if (shareBtn) {
   shareBtn.addEventListener("click", async () => {
     const data = {
       title: "Yomna Afify & Ahmed — Wedding Invitation",
-      text: "You're invited · 17 September · 8:00 PM · Beau Jardin",
+      text: "You're invited to the wedding of Yomna Afify & Ahmed · 17 September 2026 · 8:00 PM · Beau Jardin",
       url: window.location.href.replace(/invite\.html$/, ""),
     };
     try {
@@ -212,10 +197,10 @@ if (shareBtn) {
     }
     try {
       await navigator.clipboard.writeText(data.url);
-      shareBtn.textContent = "Link copied";
+      shareBtn.textContent = "Link copied · تم نسخ الرابط";
       setTimeout(() => {
-        shareBtn.textContent = "Share invitation";
-      }, 2000);
+        shareBtn.textContent = "Share invitation · شارك الدعوة";
+      }, 2200);
     } catch {
       prompt("Copy this invitation link:", data.url);
     }

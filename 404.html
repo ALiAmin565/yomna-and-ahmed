@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Yomna Afify & Ahmed — You're Invited</title>
-  <meta name="description" content="You're invited to the wedding of Yomna Afify & Ahmed. Thursday 17 September 2026 at 8:00 PM, Beau Jardin." />
+  <meta name="description" content="You're invited to the wedding of Yomna Afify & Ahmed. Thursday 17 September 2026 at 8:00 PM, Beau Jardin, Sheikh Zayed." />
   <meta name="theme-color" content="#6B1D28" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-title" content="Yomna & Ahmed" />
   <meta property="og:title" content="Yomna Afify & Ahmed — Wedding Invitation" />
-  <meta property="og:description" content="Two souls. One beautiful chaos. 17 September · 8:00 PM · Beau Jardin" />
+  <meta property="og:description" content="Two souls. One beautiful chaos. 17 September 2026 · 8:00 PM · Beau Jardin" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://aliamin565.github.io/yomna-and-ahmed/" />
   <meta property="og:image" content="https://aliamin565.github.io/yomna-and-ahmed/assets/og-share.jpg" />
@@ -17,10 +17,10 @@
   <link rel="apple-touch-icon" href="assets/og-share.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;1,400&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Great+Vibes&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Great+Vibes&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="cover-page">
+<body>
   <div class="velvet">
     <div class="stage" id="stage">
       <div class="grain" aria-hidden="true"></div>
@@ -33,17 +33,13 @@
         <p class="kicker ar" dir="rtl">أنتم مدعوون إلى حفل زفاف</p>
         <h1 class="names">
           <span class="name burgundy-text">Yomna</span>
-          <span class="lastname">Afify</span>
           <span class="amp">&amp;</span>
           <span class="name olive-text">Ahmed</span>
         </h1>
-        <button class="seal-btn" id="openBtn" type="button" aria-label="اضغط على الختم لفتح الدعوة">
-          <span class="khatm">
-            <span class="khatm-word">ختم</span>
-            <span class="khatm-day">17</span>
-            <span class="khatm-month">09</span>
-          </span>
-          <span class="seal-label">اضغط على الختم الأحمر</span>
+        <p class="cover-date">17 · 09 · 26</p>
+        <button class="seal-btn" id="openBtn" type="button" aria-label="Open the invitation">
+          <img src="assets/wax-seal.jpg" alt="" />
+          <span>Tap to open · اضغط للفتح</span>
         </button>
         <p class="cover-hint">Two souls. One beautiful chaos.</p>
       </section>
@@ -59,73 +55,17 @@
         <p class="film-quote ar" dir="rtl">ومن كل فوضى خلقنا… حكايتنا.</p>
         <img class="film-lilies" src="assets/lilies.jpg" alt="" />
         <figure class="polaroid">
-          <img src="assets/invite-gold.jpg" alt="Yomna Afify and Ahmed invitation" />
+          <img src="assets/invitation.png" alt="Yomna Afify and Ahmed wedding invitation" />
         </figure>
         <img class="film-stamp" src="assets/stamp.jpg" alt="" />
         <div class="film-names">
-          <span>Yomna Afify</span>
+          <span>Yomna</span>
           <i>&amp;</i>
           <span>Ahmed</span>
         </div>
-        <p class="film-when">17 September · 8:00 PM</p>
+        <p class="film-when">17 September 2026 · 8:00 PM</p>
         <p class="film-where">Beau Jardin · Sheikh Zayed</p>
       </section>
-
-      <main class="invite" id="invite" hidden>
-        <img class="card-art" src="assets/invite-gold.jpg" alt="Yomna Afify and Ahmed wedding invitation" />
-
-        <section class="card">
-          <p class="card-kicker">Road to Beau Jardin</p>
-          <p class="place">Watch this video for the way to the wedding palace.</p>
-          <video class="road-video" controls playsinline preload="metadata" poster="assets/invite-gold.jpg">
-            <source src="assets/directions.mp4" type="video/mp4" />
-          </video>
-        </section>
-
-        <section class="card">
-          <p class="card-kicker">Until we say I do</p>
-          <div class="ticks" id="countdown">
-            <div><strong id="dd">00</strong><span>Days</span></div>
-            <div><strong id="hh">00</strong><span>Hours</span></div>
-            <div><strong id="mm">00</strong><span>Mins</span></div>
-            <div><strong id="ss">00</strong><span>Secs</span></div>
-          </div>
-        </section>
-
-        <section class="card">
-          <p class="card-kicker">When</p>
-          <p class="big">Thursday</p>
-          <p class="huge">17 September</p>
-          <p class="place">Starts at 8:00 PM</p>
-        </section>
-
-        <section class="card">
-          <p class="card-kicker">Where</p>
-          <p class="big">Beau Jardin</p>
-          <p class="place">Sheikh Zayed, Giza</p>
-          <p class="address">Km 28 Alexandria Desert Road, opposite Dandy Mall, Sheikh Zayed, Giza, Egypt</p>
-          <div class="map-wrap">
-            <iframe
-              title="Beau Jardin on Google Maps"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              src="https://maps.google.com/maps?q=Beau%20Jardin%20Venues%20Sheikh%20Zayed&z=14&output=embed">
-            </iframe>
-          </div>
-        </section>
-
-        <section class="card note">
-          <p class="hearts">♡ ♡</p>
-          <p class="adults">Adults-only celebration</p>
-          <p>The bride and groom wish your kids sweet dreams.</p>
-        </section>
-
-        <section class="actions">
-          <a class="btn primary" id="calBtn" href="#">Add to calendar</a>
-          <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Beau+Jardin+Venues+Sheikh+Zayed" target="_blank" rel="noopener">Get directions</a>
-          <button class="btn ghost" id="shareBtn" type="button">Share invitation</button>
-        </section>
-      </main>
 
       <button class="music-btn" id="musicBtn" type="button" aria-label="Play music" aria-pressed="false">
         <span class="music-icon" aria-hidden="true">♪</span>
