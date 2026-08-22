@@ -44,6 +44,13 @@ button, a { font-family: inherit; }
   box-shadow: 0 24px 60px rgba(0,0,0,.45);
 }
 
+.road-video {
+  width: 100%;
+  margin-top: 12px;
+  background: #000;
+  max-height: 520px;
+}
+
 .card {
   margin-top: 16px;
   padding: 20px 18px;
