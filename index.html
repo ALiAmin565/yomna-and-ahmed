@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Yomna & Ahmed — You're Invited</title>
-  <meta name="description" content="You're invited to the wedding of Yomna & Ahmed. Thursday 17 September 2026 at 8:00 PM, Beau Jardin, Sheikh Zayed." />
-  <meta name="theme-color" content="#6B1D28" />
+  <title>Yomna Afify & Ahmed — You're Invited</title>
+  <meta name="description" content="You're invited to the wedding of Yomna Afify & Ahmed. Thursday 17 September 2026 at 8:00 PM, Beau Jardin, Sheikh Zayed." />
+  <meta name="theme-color" content="#4D1018" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-title" content="Yomna & Ahmed" />
-  <meta property="og:title" content="Yomna & Ahmed — Wedding Invitation" />
+  <meta property="og:title" content="Yomna Afify & Ahmed — Wedding Invitation" />
   <meta property="og:description" content="Two souls. One beautiful chaos. 17 September 2026 · 8:00 PM · Beau Jardin" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://bespoke-bublanina-3f44c6.netlify.app/" />
@@ -35,6 +35,7 @@
         <p class="kicker ar" dir="rtl">أنتم مدعوون إلى حفل زفاف</p>
         <h1 class="names">
           <span class="name burgundy-text">Yomna</span>
+          <span class="lastname">Afify</span>
           <span class="amp">&amp;</span>
           <span class="name olive-text">Ahmed</span>
         </h1>
@@ -44,6 +45,7 @@
           <span>Tap to open · اضغط للفتح</span>
         </button>
         <p class="cover-hint">Two souls. One beautiful chaos.</p>
+        <p class="cover-music">Tap the seal — music will play</p>
       </section>
 
       <!-- CURTAINS -->
@@ -59,11 +61,11 @@
         <p class="film-quote ar" dir="rtl">ومن كل فوضى خلقنا… حكايتنا.</p>
         <img class="film-lilies" src="assets/lilies.jpg" alt="" />
         <figure class="polaroid">
-          <img src="assets/invitation.png" alt="Yomna and Ahmed wedding invitation" />
+          <img src="assets/invite-cream.jpg" alt="Yomna Afify and Ahmed wedding invitation" />
         </figure>
         <img class="film-stamp" src="assets/stamp.jpg" alt="" />
         <div class="film-names">
-          <span>Yomna</span>
+          <span>Yomna Afify</span>
           <i>&amp;</i>
           <span>Ahmed</span>
         </div>
@@ -76,13 +78,17 @@
         <header class="hero">
           <p class="eyebrow">The wedding of</p>
           <h2 class="hero-names">
-            <span>Yomna</span>
+            <span>Yomna Afify</span>
             <i>&amp;</i>
             <span>Ahmed</span>
           </h2>
           <p class="arabic" dir="rtl">ومن كل فوضى خلقنا… حكايتنا.</p>
           <p class="tagline">Two souls. One beautiful chaos.</p>
-          <img class="keep" src="assets/invitation.png" alt="Yomna and Ahmed invitation collage" />
+          <div class="gallery">
+            <img src="assets/invite-cream.jpg" alt="Yomna Afify and Ahmed cream invitation" />
+            <img src="assets/invite-gold.jpg" alt="Yomna Afify and Ahmed gold floral invitation" />
+            <img src="assets/invitation.png" alt="Yomna Afify and Ahmed collage invitation" />
+          </div>
         </header>
 
         <section class="card countdown-card">
@@ -128,6 +134,7 @@
         <section class="card note">
           <p class="hearts">♡ ♡</p>
           <p class="adults">Adults-only celebration</p>
+          <p>The bride and groom wish your kids sweet dreams.</p>
           <p>We kindly ask that children stay at home.</p>
           <p class="arabic" dir="rtl">الحفل للكبار فقط — نرجو ترك الأطفال في المنزل.</p>
         </section>
@@ -141,10 +148,14 @@
 
         <footer class="end">
           <img class="end-seal" src="assets/wax-seal.jpg" alt="" />
-          <p>With love, Yomna &amp; Ahmed</p>
+          <p>With love, Yomna Afify &amp; Ahmed</p>
           <p class="arabic" dir="rtl">يومنا · ١٧ ٠٩ ٢٦</p>
         </footer>
       </main>
+      <button class="music-btn" id="musicBtn" type="button" aria-label="Play music" aria-pressed="false">
+        <span class="music-icon" aria-hidden="true">♪</span>
+      </button>
+      <audio id="bgm" src="assets/music.mp3" loop preload="auto" playsinline></audio>
     </div>
   </div>
   <script src="app.js"></script>

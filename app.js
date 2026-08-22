@@ -1,5 +1,5 @@
 const WEDDING = {
-  title: "Yomna & Ahmed Wedding",
+  title: "Yomna Afify & Ahmed Wedding",
   start: "2026-09-17T20:00:00+03:00",
   end: "2026-09-18T01:00:00+03:00",
   location: "Beau Jardin Venues, Km 28 Alexandria Desert Road, Sheikh Zayed, Giza, Egypt",
@@ -14,6 +14,45 @@ const openBtn = document.getElementById("openBtn");
 const skipBtn = document.getElementById("skipBtn");
 const shareBtn = document.getElementById("shareBtn");
 const calBtn = document.getElementById("calBtn");
+const musicBtn = document.getElementById("musicBtn");
+const bgm = document.getElementById("bgm");
+
+function setMusicUi(playing) {
+  musicBtn.classList.toggle("on", playing);
+  musicBtn.classList.toggle("needs-tap", !playing);
+  musicBtn.setAttribute("aria-pressed", playing ? "true" : "false");
+  musicBtn.setAttribute("aria-label", playing ? "Mute music" : "Play music");
+}
+
+async function startMusic() {
+  if (!bgm) return;
+  bgm.volume = 0.48;
+  bgm.loop = true;
+  try {
+    await bgm.play();
+    setMusicUi(true);
+  } catch {
+    setMusicUi(false);
+    musicBtn.classList.add("needs-tap");
+  }
+}
+
+function toggleMusic() {
+  if (bgm.paused) {
+    startMusic();
+  } else {
+    bgm.pause();
+    setMusicUi(false);
+  }
+}
+
+musicBtn.addEventListener("click", (event) => {
+  event.stopPropagation();
+  toggleMusic();
+});
+bgm.addEventListener("pause", () => setMusicUi(false));
+bgm.addEventListener("play", () => setMusicUi(true));
+setMusicUi(false);
 
 let timers = [];
 
@@ -54,6 +93,7 @@ function playFilm() {
 
 function openInvitation() {
   openBtn.disabled = true;
+  startMusic();
   curtains.classList.add("play");
   requestAnimationFrame(() => {
     requestAnimationFrame(() => curtains.classList.add("open"));
@@ -70,6 +110,7 @@ skipBtn.addEventListener("click", showInvite);
 
 if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || /[?&]open=1\b/.test(location.search)) {
   showInvite();
+  musicBtn.classList.add("needs-tap");
 }
 
 function pad(n) {
@@ -149,8 +190,8 @@ calBtn.addEventListener("click", downloadCalendar);
 
 shareBtn.addEventListener("click", async () => {
   const data = {
-    title: "Yomna & Ahmed — Wedding Invitation",
-    text: "You're invited to the wedding of Yomna & Ahmed · 17 September 2026 · 8:00 PM · Beau Jardin",
+    title: "Yomna Afify & Ahmed — Wedding Invitation",
+    text: "You're invited to the wedding of Yomna Afify & Ahmed · 17 September 2026 · 8:00 PM · Beau Jardin",
     url: window.location.href,
   };
   try {

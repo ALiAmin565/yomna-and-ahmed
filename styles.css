@@ -1,13 +1,13 @@
 :root {
-  --burgundy: #6b1d28;
-  --burgundy-deep: #3e1018;
-  --olive: #3f4f32;
-  --olive-soft: #5a6b45;
-  --cream: #f4ead8;
-  --parchment: #ebe1cd;
-  --ink: #241e1a;
-  --gold: #b0894f;
-  --muted: #6d6258;
+  --burgundy: #4d1018;
+  --burgundy-deep: #2c0b10;
+  --olive: #24311d;
+  --olive-soft: #3a4a2c;
+  --cream: #f7f1e3;
+  --parchment: #efe6d4;
+  --ink: #1a1512;
+  --gold: #9a7428;
+  --muted: #4d433b;
   --serif: "Cormorant Garamond", Georgia, serif;
   --script: "Great Vibes", cursive;
   --sans: "Outfit", system-ui, sans-serif;
@@ -132,24 +132,33 @@ button, a { font-family: inherit; }
 .names {
   position: relative;
   margin: 18px 0 8px;
-  line-height: .9;
+  line-height: .92;
 }
 .names .name {
   display: block;
   font-family: var(--serif);
-  font-weight: 600;
-  font-size: clamp(64px, 18vw, 84px);
+  font-weight: 700;
+  font-size: clamp(52px, 15vw, 76px);
   letter-spacing: -.03em;
+}
+.lastname {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--serif);
+  font-size: 22px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--burgundy);
 }
 .burgundy-text { color: var(--burgundy); }
 .olive-text { color: var(--olive); }
 .amp {
   display: block;
   font-family: var(--script);
-  font-size: 48px;
+  font-size: 46px;
   color: var(--ink);
-  line-height: .4;
-  margin: 4px 0 2px;
+  line-height: 1;
+  margin: 22px 0 20px;
 }
 
 .cover-date {
@@ -193,6 +202,39 @@ button, a { font-family: inherit; }
   font-style: italic;
   font-size: 18px;
   color: var(--burgundy);
+}
+.cover-music {
+  position: relative;
+  margin: 8px 0 0;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.music-btn {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 12;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(36,30,26,.2);
+  border-radius: 50%;
+  background: rgba(244,234,216,.88);
+  color: var(--burgundy);
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  box-shadow: 0 8px 18px rgba(36,30,26,.12);
+}
+.music-btn.on {
+  background: var(--burgundy);
+  color: var(--cream);
+  border-color: var(--burgundy);
+}
+.music-btn.needs-tap {
+  animation: breathe 1.8s ease-in-out infinite;
 }
 
 @keyframes breathe {
@@ -366,6 +408,7 @@ button, a { font-family: inherit; }
   font-style: normal;
   display: block;
   font-size: 28px;
+  margin: 14px 0;
 }
 
 @keyframes rise {
@@ -400,9 +443,9 @@ button, a { font-family: inherit; }
 .hero-names {
   margin: 10px 0 8px;
   font-family: var(--serif);
-  font-weight: 600;
-  font-size: 54px;
-  line-height: .92;
+  font-weight: 700;
+  font-size: 46px;
+  line-height: 1;
 }
 .hero-names span:first-child { color: var(--burgundy); }
 .hero-names span:last-child { color: var(--olive); }
@@ -410,9 +453,20 @@ button, a { font-family: inherit; }
   display: block;
   font-family: var(--script);
   font-style: normal;
-  font-size: 34px;
+  font-size: 36px;
   color: var(--ink);
   font-weight: 400;
+  margin: 16px 0;
+}
+.gallery {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+}
+.gallery img {
+  width: 100%;
+  border-radius: 4px;
+  box-shadow: 0 16px 40px rgba(36,30,26,.18);
 }
 .arabic {
   font-family: var(--ar);
