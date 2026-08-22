@@ -6,8 +6,69 @@ const WEDDING = {
   details: "Thursday 17 September 2026 · 8:00 PM · Beau Jardin\nAdults-only celebration.",
 };
 
+const cover = document.getElementById("cover");
+const curtains = document.getElementById("curtains");
+const film = document.getElementById("film");
+const invite = document.getElementById("invite");
+const openBtn = document.getElementById("openBtn");
+const skipBtn = document.getElementById("skipBtn");
 const shareBtn = document.getElementById("shareBtn");
 const calBtn = document.getElementById("calBtn");
+
+let timers = [];
+
+function later(fn, ms) {
+  const id = setTimeout(fn, ms);
+  timers.push(id);
+  return id;
+}
+
+function clearTimers() {
+  timers.forEach(clearTimeout);
+  timers = [];
+}
+
+function showInvite() {
+  clearTimers();
+  cover.style.display = "none";
+  curtains.classList.remove("play", "open");
+  film.classList.remove("show", "step-1", "step-3", "step-5", "step-6");
+  film.style.display = "none";
+  invite.hidden = false;
+  invite.classList.add("show");
+  document.getElementById("stage").classList.add("is-open");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function playFilm() {
+  film.style.display = "block";
+  film.classList.add("show");
+  later(() => film.classList.add("step-1"), 200);
+  later(() => film.classList.add("step-3"), 1100);
+  later(() => film.classList.add("step-5"), 2200);
+  later(() => film.classList.add("step-6"), 3000);
+  later(showInvite, 5600);
+}
+
+function openInvitation() {
+  openBtn.disabled = true;
+  curtains.classList.add("play");
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => curtains.classList.add("open"));
+  });
+  later(() => {
+    cover.style.display = "none";
+    playFilm();
+  }, 900);
+  later(() => curtains.classList.remove("play", "open"), 1900);
+}
+
+openBtn.addEventListener("click", openInvitation);
+skipBtn.addEventListener("click", showInvite);
+
+if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  showInvite();
+}
 
 function pad(n) {
   return String(n).padStart(2, "0");
@@ -56,7 +117,6 @@ calBtn.addEventListener("click", (event) => {
     `DTEND:${icsStamp(WEDDING.end)}`,
     `SUMMARY:${WEDDING.title}`,
     `LOCATION:${WEDDING.location}`,
-    `DESCRIPTION:${WEDDING.details.replace(/\n/g, "\\n")}`,
     "END:VEVENT",
     "END:VCALENDAR",
   ].join("\r\n");
